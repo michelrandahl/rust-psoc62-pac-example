@@ -1,17 +1,21 @@
-[build]
-target = "thumbv7em-none-eabihf"
+#[build]
+#target = "thumbv7em-none-eabihf"
 
 [target.thumbv7em-none-eabihf]
-# Useful for `cargo run` automation (optional)
-#runner = "arm-none-eabi-gdb -tui -q -x debug.gdb"
-runner = "arm-none-eabi-gdb -x debug.gdb"
-# runner = "gdb -tui -q -x debug.gdb"
-# runner = "gdb -q -x debug.gdb"
-
-# REQUIRED - sets the linker script
+runner = "arm-none-eabi-gdb -x debug-m4.gdb"
 rustflags = [
+    "-C", "link-arg=-Tmemory-v7.x",
     "-C", "link-arg=-Tlink.x",
 ]
 
+[target.thumbv6m-none-eabi]
+runner = "arm-none-eabi-gdb -x debug-m0.gdb"
+rustflags = [
+    "-C", "link-arg=-Tmemory-v6.x",
+    "-C", "link-arg=-Tlink.x",
+]
 
-# sudo openocd -f interface/cmsis-dap.cfg -f target/psoc6.cfg
+# REQUIRED - sets the linker script
+#rustflags = [
+#    "-C", "link-arg=-Tlink.x",
+#]
