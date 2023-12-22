@@ -1,6 +1,6 @@
 # rust-psoc62-pac-example
 Blinks LED on the 4343W psoc62 prototyping board.
-This program will run on the M4 core on the psoc62 and the program will not work after reseting the board.
+This program can either be run on the M0+ or M4 core on the psoc62.
 
 ## How to run the program
 
